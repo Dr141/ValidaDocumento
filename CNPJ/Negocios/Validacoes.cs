@@ -6,9 +6,9 @@ namespace CNPJ.Negocios
     {
         internal static void ValidarCNPJSemFormata(this string numeroCPF)
         {
-            StringLengthAttribute cepAttribute = new StringLengthAttribute(11)
+            StringLengthAttribute cepAttribute = new StringLengthAttribute(14)
             {
-                MinimumLength = 11,
+                MinimumLength = 14,
                 ErrorMessage = "O CNPJ deve conter 14 dígitos."
             };
 

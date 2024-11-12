@@ -22,10 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CNPJ\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\CNPJ\CNPJ.csproj" />
     <ProjectReference Include="..\CPF\CPF.csproj" />
   </ItemGroup>
 
