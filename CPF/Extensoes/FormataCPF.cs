@@ -1,4 +1,5 @@
 ﻿using CPF.Negocios;
+using System.Text.RegularExpressions;
 namespace CPF.Extensoes;
 
 public static class FormataCPF
@@ -33,7 +34,7 @@ public static class FormataCPF
         try
         {
             numeroCPF.ValidarCPFormatado();
-            return numeroCPF.Replace(".", "").Replace("-", "");
+            return Regex.Replace(numeroCPF, "[. -]", "", RegexOptions.IgnoreCase);
         }
         catch { throw; }
     }
