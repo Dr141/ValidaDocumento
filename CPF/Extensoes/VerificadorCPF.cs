@@ -25,40 +25,35 @@ public static class VerificadorCPF
 
     private static bool CalculoDigitoVerificadorInterno(string numeroCPF)
     {
-        int auxiliar = 0;
-        int contador = 1;
-        List<char> numerosCalculo = numeroCPF.ToCharArray(0, 9).ToList();
-        List<char> digitoInformado = numeroCPF.ToCharArray(9, 2).ToList();
+        if (numeroCPF.Length != 11)
+            return false;
 
-        foreach (char c in numerosCalculo) 
+        string numerosCpf = numeroCPF.Substring(0, 9);
+
+        for (int x = 0; x < 2; x++)
         {
-            auxiliar += int.Parse(c.ToString()) * contador;
-            contador++;
+            int contador = (x == 0) ? 10 : 11;
+            int auxiliar = 0;
+            for (int i = 0; i < numerosCpf.Length; i++)
+            {
+                auxiliar += (numerosCpf[i] - '0') * contador;
+                contador--;
+            }
+
+            numerosCpf += EncontrarDigito(auxiliar);
         }
 
-        numerosCalculo.Add(EncontrarDigito(auxiliar));
-        auxiliar = 0;
-        contador = 0;
-
-        foreach (char c in numerosCalculo)
-        {
-            auxiliar += int.Parse(c.ToString()) * contador;
-            contador++;
-        }
-
-        numerosCalculo.Add(EncontrarDigito(auxiliar));
-
-        return string.Concat(numerosCalculo).Equals(numeroCPF);
+        return numerosCpf.Equals(numeroCPF);
     }
 
-    private static char EncontrarDigito(int valor)
+    /// <summary>
+    /// Método para encontrar digito verificador.
+    /// </summary>
+    /// <param name="valor"></param>
+    /// <returns>Retorna um número <see cref="int"/></returns>
+    private static int EncontrarDigito(int valor)
     {
-        if(valor % 11 == 10)
-        {
-            return '0';
-        }
-
         int resultado = valor % 11;
-        return char.Parse(resultado.ToString());
+        return resultado == 0 || resultado == 1 ? 0 : 11 - resultado;
     }
 }
