@@ -21,9 +21,4 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CNPJ\CNPJ.csproj" />
-    <ProjectReference Include="..\CPF\CPF.csproj" />
-  </ItemGroup>
-
 </Project>
