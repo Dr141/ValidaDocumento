@@ -2,6 +2,9 @@
 
 namespace Documentos.Extensoes;
 
+/// <summary>
+/// Classe que implementa os métodos de validação do digito verificador de CPF/CNPJ.
+/// </summary>
 public static class Verificador
 {
     /// <summary>
