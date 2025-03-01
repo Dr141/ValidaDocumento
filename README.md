@@ -82,7 +82,7 @@ Remove a formatação de CPF ou CNPJ.
 ## Exemplo de Uso
 
 ```csharp
-using ValidaDocumento;
+using Documentos.Extensoes;
 
 public class Exemplo
 {
@@ -101,10 +101,10 @@ public class Exemplo
             Console.WriteLine("CNPJ válido!");
         }
 
-        string cpfFormatado = cpf.RemoverFormatacao().FormatarCPF();
+        string cpfFormatado = cpf.RemoverFormatacao();
         Console.WriteLine($"CPF formatado: {cpfFormatado}");
 
-        string cnpjFormatado = cnpj.RemoverFormatacao().FormatarCNPJ();
+        string cnpjFormatado = cnpj.RemoverFormatacao();
         Console.WriteLine($"CNPJ formatado: {cnpjFormatado}");
     }
 }
