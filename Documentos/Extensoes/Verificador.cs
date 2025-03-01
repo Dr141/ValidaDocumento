@@ -1,5 +1,4 @@
 ﻿using Documentos.Negocios;
-using System.Text.RegularExpressions;
 
 namespace Documentos.Extensoes;
 
@@ -13,7 +12,7 @@ public static class Verificador
     /// <exception cref="ValidationException">Rertona uma exception com os erros encontrado no documento.</exception>
     public static bool VerificadorCpf(this string cpf)
     {
-        string numeroCpf = Regex.Replace(cpf, "[. -]", "", RegexOptions.IgnoreCase);
+        string numeroCpf = cpf.RemoverFormatacao();
         numeroCpf.ValidarCPFSemFormatacao();
         return numeroCpf.CalculoDigitoVerificadorCpf();
     }
@@ -26,8 +25,8 @@ public static class Verificador
     /// <exception cref="ValidationException">Rertona uma exception com os erros encontrado no documento.</exception>
     public static bool VerificadorCnpj(this string cnpj)
     {
-        string numeroCnpj = Regex.Replace(cnpj, @"[.\-\/]", "", RegexOptions.IgnoreCase);
+        string numeroCnpj = cnpj.RemoverFormatacao();
         numeroCnpj.ValidaCnpjSemFormatacao();
         return numeroCnpj.CalculoDigitoVerificadorCnpj();
-    }
+    }    
 }
